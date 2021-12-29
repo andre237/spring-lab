@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: 127.0.0.1:9092
+      group-id: consumer-kafka
+      auto-offset-reset: earliest
+  datasource:
+    url: jdbc:postgresql://localhost:5433/dev
+    username: dev
+    password: 123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  flyway:
+    enabled: false
+app:
+  orders:
+    topic:
+      url: ORDER.ITEM.OUTBOUND
+      group-id: ORDER.ITEM.OUTBOUND.GRP.1
