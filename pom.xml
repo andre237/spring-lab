@@ -17,7 +17,6 @@
 		<java.version>11</java.version>
 		<spring-cloud.version>2021.0.0</spring-cloud.version>
 		<log4j2.version>2.17.0</log4j2.version>
-		<avro.version>1.8.2</avro.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,16 +43,6 @@
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>avro-compiler</artifactId>
-			<version>${avro.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.avro</groupId>
-			<artifactId>avro-maven-plugin</artifactId>
-			<version>${avro.version}</version>
 		</dependency>
 
 		<dependency>
@@ -91,6 +80,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.10.2</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -117,27 +111,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.avro</groupId>
-				<artifactId>avro-maven-plugin</artifactId>
-				<version>${avro.version}</version>
-				<executions>
-					<execution>
-						<id>schemas</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>schema</goal>
-							<goal>protocol</goal>
-							<goal>idl-protocol</goal>
-						</goals>
-						<configuration>
-							<sourceDirectory>src/main/resources/avro</sourceDirectory>
-							<outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

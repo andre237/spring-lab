@@ -1,5 +1,6 @@
 package com.training.spring.lab.service.messaging;
 
+import com.training.spring.lab.common.schemas.OrderItem;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,7 +13,7 @@ public class OrderItemsConsumer {
             topics = "${app.orders.topic.url}",
             groupId = "${app.orders.topic.group-id}"
     )
-    public void consume(ConsumerRecord<String, String> order) {
+    public void consume(ConsumerRecord<String, OrderItem> order) {
         log.info("Consuming order {} - {}", order.key(), order.value());
     }
 
