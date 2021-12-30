@@ -5,7 +5,7 @@ spring:
       group-id: consumer-kafka
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: com.training.spring.lab.utils.CustomKafkaJsonDeserializer
+      value-deserializer: com.training.spring.lab.utils.serializer.CustomKafkaJsonDeserializer
   datasource:
     url: jdbc:postgresql://localhost:5433/dev
     username: dev
@@ -16,7 +16,9 @@ spring:
     hibernate:
       ddl-auto: none
   flyway:
-    enabled: false
+    enabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: false
 feign:
   client:
     config:

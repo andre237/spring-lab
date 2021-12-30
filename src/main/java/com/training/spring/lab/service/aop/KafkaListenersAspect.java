@@ -18,7 +18,7 @@ public class KafkaListenersAspect {
         double execTime =  (System.nanoTime() - startTime) / 1e6;
 
         ConsumerRecord<String, ?> payload = (ConsumerRecord<String, ?>) pjp.getArgs()[0];
-        log.info("Kafka consumer triggered. Schema = {} | Execution = {}ms", payload.value().getClass().getSimpleName(), execTime);
+        log.debug("Kafka consumer triggered. Schema = {} | Execution = {}ms", payload.value().getClass().getSimpleName(), execTime);
 
         return object;
     }

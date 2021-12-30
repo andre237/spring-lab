@@ -1,4 +1,4 @@
-package com.training.spring.lab.utils;
+package com.training.spring.lab.utils.serializer;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
