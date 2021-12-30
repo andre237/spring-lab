@@ -17,8 +17,18 @@ spring:
       ddl-auto: none
   flyway:
     enabled: false
+feign:
+  client:
+    config:
+      order-expenses:
+        defaultRequestHeaders:
+          ApiKey: ${app.orders.external.expenses.api-key}
 app:
   orders:
     topic:
       url: ORDER.ITEM.OUTBOUND
       group-id: ORDER.ITEM.OUTBOUND.GRP.1
+    external:
+      expenses:
+        url: ${EXPENSES_MODULE_URL:http://localhost:8085/}
+        api-key: ${EXPENSES_MODULE_API_KEY:lkj324892fn41}
